@@ -71,14 +71,8 @@ export default function App() {
   };
 
   const handleDeleteReport = (id: string) => {
-    setApkReports(prev => {
-      const remaining = prev.filter(r => r.id !== id);
-      if (selectedAPKId === id) {
-        // Use the functional form so we pick from the already-updated list
-        setSelectedAPKId(remaining.length > 0 ? remaining[0].id : null);
-      }
-      return remaining;
-    });
+    setApkReports(prev => prev.filter(r => r.id !== id));
+    setSelectedAPKId(prevId => (prevId === id ? null : prevId));
   };
 
   const handleSelectAPKAndNavigate = (id: string, view: 'report' | 'static' | 'dynamic') => {
