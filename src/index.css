@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: #f9fafb;
+}
+
+/* Custom Scrollbars for Terminal Consoles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Slide in animations for Toasts */
+@keyframes slide-in {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Printing Overrides for formal Board PDF */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  #enterprise-sidebar,
+  header,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  #formal-pdf-canvas {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* Pro Max Ultra Glassmorphism Utilities */
+.bg-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  /* visionOS inner highlight */
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.9), 
+    inset 0 0 10px rgba(255, 255, 255, 0.3), 
+    0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.bg-glass-dark {
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+.border-glass {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.shadow-glass {
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* Micro-Animations & Glows */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.9), 
+    0 20px 40px -10px rgba(15, 53, 126, 0.15);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0F357E 0%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); filter: blur(40px); }
+  50% { transform: scale(1.03); filter: blur(45px); }
+  100% { transform: scale(1); filter: blur(40px); }
+}
+
+.animate-breathe {
+  animation: breathe 15s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+/* Base styles for the light blurry background */
+.app-bg-container {
+  overflow: hidden;
+  position: relative;
+  background-color: #f8fafc;
+}
+
+.app-bg {
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background-image: url('/ultra_bg.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  /* Massive blur applied directly to the background image */
+  filter: blur(40px);
+}
+
+.perspective-\[1000px\] {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.rotate-x-60 {
+  transform: rotateX(60deg);
+}
+.rotate-y-60 {
+  transform: rotateY(60deg);
+}
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+.animate-spin-slow-reverse {
+  animation: spin-reverse 12s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotateX(60deg) rotateZ(0deg); }
+  to { transform: rotateX(60deg) rotateZ(360deg); }
+}
+@keyframes spin-reverse {
+  from { transform: rotateY(60deg) rotateZ(360deg); }
+  to { transform: rotateY(60deg) rotateZ(0deg); }
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

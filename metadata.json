@@ -1,0 +1,6 @@
+{
+  "name": "ThreatLens AI",
+  "description": "An automated full-stack APK reverse engineering, static auditing, dynamic sandbox simulation, and banking fraud mapping platform designed for retail financial institutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
